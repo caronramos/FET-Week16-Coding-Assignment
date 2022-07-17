@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-brand {
+  margin-left: .5rem;
+}
+
+/* a.navbar-brand {
+  display: flex;
+  flex-direction: column;
+  margin-left: .5rem;
+  /* width: 100vw;  */
+  /* width: 100vh;
+
+#basic-navbar-nav {
+  align-items: center; */
