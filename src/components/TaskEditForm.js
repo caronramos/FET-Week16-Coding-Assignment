@@ -3,9 +3,9 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 
-export default function MedEditForm({med, deleteMed, onSubmit }) {
+export default function TaskEditForm({task, deleteTask, onSubmit }) {
   
-  const [formData, setFormData] = useState(med);
+  const [formData, setFormData] = useState(task);
 
   const handleChange = (e) => {
     setFormData({
@@ -15,19 +15,19 @@ export default function MedEditForm({med, deleteMed, onSubmit }) {
   }
 
   const handleDeleteClick = (e) => {
-    deleteMed(med._id);
+    deleteTask(task._id);
   }
 
   return (
     <tr>
       <td>
-        <input type="text" name="brandName" value={formData.brandName} onChange={handleChange} />
+        <input type="text" name="taskName" value={formData.taskName} onChange={handleChange} />
       </td>
       <td>
-        <input type="text" name="genericName" value={formData.genericName} onChange={handleChange} />
+        <input type="text" name="description" value={formData.description} onChange={handleChange} />
       </td>
       <td>
-        <input type="text" name="reaction" value={formData.reaction} onChange={handleChange} />
+        <input type="text" name="materials" value={formData.materials} onChange={handleChange} />
       </td>
       <td>
       <Button variant="outlined" startIcon={<DeleteIcon />} onClick={handleDeleteClick}>

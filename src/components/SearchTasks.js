@@ -1,35 +1,29 @@
-// adapted from https://github.com/machadop1407/React-Search-Bar
-// TODO: search by brandName and reaction
-
 import React, {useState} from 'react';
-import './SearchMeds.css';
+import './SearchTasks.css';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CancelPresentationOutlinedIcon from '@mui/icons-material/CancelPresentationOutlined';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 
-function SearchMed({placeholder, meds}) {
-  const [filteredMedList, setFilteredMedList] = useState([]);
-  // searchTerm represents user input and is triggered by onChange
+function SearchTask({placeholder, tasks}) {
+  const [filteredTaskList, setFilteredTaskList] = useState([]);
   const[searchTerm, setSearchTerm] = useState('');
 
-  // searchTerm becomes event
-  // filter streamlines map for values desired, if empty returns current data otherwise returns new data
   const handleFilter = (e) => {
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
-    const newFilter = meds.filter((value) => {
+    const newFilter = tasks.filter((value) => {
       return value.brandName.toLowerCase().includes(searchTerm.toLowerCase());
     });
       if (searchTerm === "") {
-        setFilteredMedList([]);
+        setFilteredTaskList([]);
       } else {
-        setFilteredMedList(newFilter);
+        setFilteredTaskList(newFilter);
     }
   };
 
   const clearInput = () => {
-    setFilteredMedList([]);
+    setFilteredTaskList([]);
     setSearchTerm("");
   };
 
@@ -43,25 +37,25 @@ function SearchMed({placeholder, meds}) {
           onChange={handleFilter}
         />
         <div className="searchIcon">
-          {filteredMedList.length === 0 ? (
+          {filteredTaskList.length === 0 ? (
             <SearchOutlinedIcon />
           ) : (
             <CancelPresentationOutlinedIcon id="clearBtn" onClick={clearInput} />
           )}
         </div>
       </div>
-      {/* below code returns a med from dbase into a paragraph, needs to be exported into UsersMedList on a click, need a message for 'not found' */}
-      {filteredMedList.length !== 0 && (
-        <div className="medListResult" key={filteredMedList._id}>
-          {filteredMedList.slice(0, 5).map((value, key) => {
+      { }
+      {filteredTaskList.length !== 0 && (
+        <div className="taskListResult" key={filteredTaskList._id}>
+          {filteredTaskList.slice(0, 5).map((value, key) => {
             return (
-              <a className="medListItem" href={value.link} target="_blank">
-                {/* <p>{value.brandName} </p> */}
+              <a className="taskListItem" href={value.link} target="_blank">
+                { }
               </a>
             );
           })}
         <Button variant="contained" sendIcon={<SendIcon />}>
-          Save Med to Your List
+          Save Task to Your List
         </Button> 
         </div>
       )}
@@ -69,4 +63,4 @@ function SearchMed({placeholder, meds}) {
   );
 }
 
-export default SearchMed;
+export default SearchTask;

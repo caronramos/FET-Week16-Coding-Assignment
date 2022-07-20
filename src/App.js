@@ -1,35 +1,32 @@
-// receives meds from CreateMeds and displays in a table, TODO: route to different pages
 import './App.css';
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './components/Home';
-import MedCreateForm from './components/MedCreateForm';
-import MedTable from './components/MedTable';
-import medsList from './data';
+import TaskCreateForm from './components/TaskCreateForm';
+import TaskTable from './components/TaskTable';
+import tasksList from './data';
 import Navigation from './components/Navigation';
 
 const App = () => {
 
-  const [meds, setMeds] = useState(medsList);
+  const [tasks, setTasks] = useState(tasksList);
 
-  // add new/created med to array with push
-  const createMed = med => {
-      med._id = meds.length;
-      const arr = [...meds];
-      arr.push(med);
-      setMeds(arr);
+  const createTask = task => {
+      task._id = tasks.length;
+      const arr = [...tasks];
+      arr.push(task);
+      setTasks(arr);
   };
 
-  // rework, this is making a copy
-  const updateMed = med => {
-    const arr = [...meds];
-    arr[med._id] = med;
-    setMeds(arr);
+  const updateTask = task => {
+    const arr = [...tasks];
+    arr[task._id] = task;
+    setTasks(arr);
   };
 
-  const deleteMed = medsId => {
-    setMeds(meds.filter((m) => m._id !== medsId));
+  const deleteTask = tasksId => {
+    setTasks(tasks.filter((m) => m._id !== tasksId));
   };
 
   return (
@@ -41,10 +38,10 @@ const App = () => {
             <Home/>
           </Route>
           <Route exact path="/add">
-            <MedCreateForm createMed={createMed}/>
+            <TaskCreateForm createTask={createTask}/>
           </Route>
           <Route exact path="/list">
-            <MedTable meds={meds} updateMed={updateMed} deleteMed={deleteMed}/>
+            <TaskTable tasks={tasks} updateTask={updateTask} deleteTask={deleteTask}/>
           </Route>
         </Switch>
       </Container>
